@@ -1,0 +1,63 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Tarefa:</label>
+        <input v-model="newTodoText" id="new-todo" placeholder="Ex.: Alimentar o gato">
+        <button>Adicionar</button>
+    </form>
+    <ul>
+        <li is="todos-itens" v-for="(todo, index) in todos" :key="todo.id" :title="todo.title" @remove="todos.splice(index, 1)">
+
+        </li>
+    </ul>
+</div>
+
+<script>
+    Vue.component('todos-itens', {
+        template: '\
+            <li>\
+            {{ title }}  >>  \
+            <button @click="$emit(\'remove\')">Remove</button>\
+            <hr>\
+            </li>\
+            ',
+        //necessário colocar a \ no final para a instruções HTMLs serem lidas apenas qdo o componente for chamado
+        props: ['title'] //informa o locar onde o template será injetado
+
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+            newTodoText: '',
+            todos: [{
+                id: 1,
+                title: 'Lavar os pratos',
+            }, {
+                id: 2,
+                title: 'Tirar o lixo',
+            }, {
+                id: 3,
+                title: 'Cortar a grama'
+            }],
+            nextTodoId: 4
+        },
+        methods: {
+            addNewTodo() {
+                this.todos.push({
+                    id: this.nextTodoId++,
+                    title: this.newTodoText
+                })
+                this.newTodoText = ''
+            }
+        }
+    })
+</script>
+
+<style>
+    .li {
+        color: black;
+    }
+</style>

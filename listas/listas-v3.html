@@ -1,0 +1,46 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="(cor, i) in cores">
+            {{i}} - {{ cor }}
+            <!--
+                Acessando o índice da lista
+                A ordem é o valor e depois o índice
+            -->
+        </li>
+    </ul>
+
+    <template v-for="(cor, i) in cores">
+        <!--
+            Na renderização final não cria uma lista, mas sim um parágrafo, titulo ou div.. para cada item            
+        -->
+        <h1>{{cor}}</h1>
+        <p>{{cor}}</p>
+        <div>{{cor}}</div>
+    </template>
+
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+        }
+    })
+</script>
+
+
+<style>
+    ul {
+        list-style: none;
+    }
+</style>
+<!--
+    Retirando a decoração da lista pelo CSS
+        - retirar é none
+    Ou alterando
+-->

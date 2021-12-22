@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multi Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app1">
+        {{ titulo }}
+        <button @click='alterar'> Alterar Título 2</button>
+    </div>
+    <div id="app2">
+        {{ titulo }}
+        <button @click='alterar'> Alterar Título 1</button>
+    </div>
+</body>
+
+
+<script>
+    //má utilização de crossover de instancias Vues pode ocasionar em erros
+    //melhor, caso seja necessário, apenas acessar informações invés de alterar
+
+    const vm1 = new Vue({
+        el: '#app1',
+        data: {
+            titulo: 'Titulo 1'
+        },
+        methods: {
+            alterar() {
+                vm2.titulo += '????'
+            }
+        }
+    })
+
+    const vm2 = new Vue({
+        el: '#app2',
+        data: {
+            titulo: 'Titulo 2'
+        },
+        methods: {
+            alterar() {
+                vm1.titulo += '!!!!'
+            }
+        }
+    })
+
+    setTimeout(() => {
+        vm1.titulo = 'Alterado pelo Timer!'
+            //Alterando pelo JS puro
+    }, 2000);
+</script>
+
+</html>

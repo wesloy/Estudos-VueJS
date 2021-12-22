@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multi Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app1">
+        {{ titulo }} {{ novaInfo }}
+        <!--
+            novaInfo como interpolação não irá funcionar corretamente pois não é reativa, não está dentro do objeto Vue
+        -->
+        <hr>
+        <button @click='alterar'> Alterar Título</button>
+    </div>
+
+</body>
+
+
+<script>
+    const vm = new Vue({
+        el: '#app1',
+        data: {
+            titulo: 'Titulo 1'
+        },
+        methods: {
+            alterar() {
+                this.titulo += '????'
+            }
+        }
+    })
+
+    //Fora da Vue não é reativo e não pode ser interpolado..
+    vm.novaInfo = 'Teste'
+    console.log(vm.novaInfo)
+</script>
+
+</html>

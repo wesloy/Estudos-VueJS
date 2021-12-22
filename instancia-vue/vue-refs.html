@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Refs Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 ref='TesteRef'>
+            {{ titulo }}
+        </h1>
+    </div>
+</body>
+
+<script>
+    //refs são usados para nomear elementos que desejam ser capturados da DOM
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Titulo'
+        },
+        methods: {
+            capturadoValorRef() {
+                //mais comumente utilizado
+                console.log(this.$refs.TesteRef.innerText)
+                    //para testar, vai em Console do Browser e digita... vm.$refs
+            }
+
+        }
+    })
+
+    //Refs deve ser acessao com cuidado, visto a manipulação do Vue na DOM
+    vm.$refs.TesteRef.innerText = 'Altarado diretamente :('
+</script>
+
+</html>

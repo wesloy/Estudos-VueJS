@@ -1,0 +1,185 @@
+/* GERAL */
+
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel {
+    margin: 10px;
+    padding: 30px;
+    box-shadow: 5px 10px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Pontuação */
+
+.scores {
+    /* conteiner */
+    display: flex;
+}
+
+.score {
+    /* itens */
+    flex: 1;
+    /* 1 quer dizer que irá ocupar toda a tela */
+    display: flex;
+    flex-direction: column;
+    /* alinhar um abaixo do outro*/
+    justify-content: center;
+    align-items: center;
+    /* alinhando ao centro */
+}
+
+.score h1 {
+    /* está relacionado com a fonte que importou-se do google (via link) */
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.life-bar {
+    /* estrutura da barra */
+    width: 80%;
+    /* o tanto que irá ocupar da div que está */
+    height: 20px;
+    /* altura */
+    border: 1px solid #AAA;
+}
+
+.life-bar .life {
+    /* o preenchimento da barra */
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    /*width: 30%; vai ser controlado pelo Vue.js */
+    background-color: green;
+}
+
+.life-bar .life.danger {
+    /* 
+        o preenchimento da barra 
+        esta será utilizada pelo viu, com uma certa condição
+    */
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    background-color: red;
+}
+
+
+/* Resultado */
+
+.result {
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.result .win {
+    color: green;
+}
+
+.result .lose {
+    color: red;
+}
+
+
+/* Controle do jogo (Botões) */
+
+button:disabled,
+button[disabled] {
+    border: none;
+    background-color: #cccccc;
+    color: #4b4a4a;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background-color: grey;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin: 0px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.attack {
+    background-color: rgb(187, 8, 8);
+    color: white;
+}
+
+.special-attack {
+    background-color: rgb(186, 189, 27);
+    color: white;
+}
+
+.heal {
+    background-color: rgb(7, 116, 34);
+    color: white;
+}
+
+.give-up {
+    background-color: #bbb;
+    color: black;
+}
+
+.new-game {
+    background-color: rgb(24, 11, 145);
+    color: white;
+}
+
+.rules {
+    display: flow-root;
+    justify-content: left;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.rules ul {
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+
+/* LOGS */
+
+.logs ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logs ul li {
+    display: flex;
+    justify-content: center;
+    margin: 4px 0px;
+    padding: 3px 0px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.player {
+    background-color: rgba(64, 64, 153, 0.726);
+    color: white;
+}
+
+.monster {
+    background-color: rgba(192, 70, 70, 0.76);
+    color: white;
+}

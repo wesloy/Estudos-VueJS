@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multi Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+
+
+<div id="app">
+    <!-- Para chamar um componente vc usa como tag o nome que deu ao componente  -->
+    <novo-componente>
+        <h1>TESTE</h1>
+        <!--Não funciona, deve estar dentro do template do componente e não diretamente no html-->
+    </novo-componente>
+    <novo-componente></novo-componente>
+    <novo-componente></novo-componente>
+
+</div>
+
+
+<script>
+    Vue.component('novo-componente', {
+        //Vue.componet >>>>> é um registro global dentro do Vue. Geralmente usa-se registros locais, para evitar alto uso de recursos.
+        //A notação deve sempre ser na regra W3C, para evitar conflitos (nome-letras-minusculas-separadas-por-hifen).
+        template: `        
+            <div>    
+                {{ titulo }}        
+                <hr>
+                <button @click='alterar'>Alterar Título</button>
+            </div>        
+        `,
+        data: function() {
+            //Data precisa ser functions para que cada componente tenha seu próprio estado
+            //Independte dele ser duplciado no html
+            return {
+                titulo: 'Titulo'
+            }
+        },
+        methods: {
+            alterar() {
+                this.titulo += '?'
+            }
+        }
+
+    })
+
+
+    const vm = new Vue({
+        el: '#app'
+    })
+</script>
+
+
+
+</html>

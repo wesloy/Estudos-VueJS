@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>MATADOR DE MONSTROS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!--Linkando fonte externa do google-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="panel scores">
+
+            <div class="score">
+                <h1>Jogador</h1>
+                <div class="life-bar">
+                    <!--Barra de progresso-->
+                    <div class="life" :class="{danger: playerLife < 20}" :style="{width: playerLife + '%'}"></div>
+                    <!--Progresso-->
+                    <!--Condicional a troca de cor e lincando a largura dinâmicamente-->
+                </div>
+                <div>{{ playerLife }}%</div>
+                <!--Nominal-->
+            </div>
+
+            <div class="score">
+                <h1>Monstro</h1>
+                <div class="life-bar">
+                    <!--Barra de progresso-->
+                    <div class="life" :class="{danger: monsterLife < 20}" :style="{width: monsterLife + '%'}"></div>
+                    <!--Progresso-->
+                    <!--Condicional a troca de cor e lincando a largura dinâmicamente-->
+                </div>
+                <div>{{ monsterLife }}%</div>
+                <!--Nominal-->
+            </div>
+
+        </div>
+
+
+        <div v-if="hasResult" class="panel result">
+            <div v-if="monsterLife == 0 && playerLife > 0" class="win">Você ganhou!!! :)</div>
+            <div v-else class="lose">Você perdeu!!! :(</div>
+        </div>
+
+
+        <div class="panel buttons">
+
+            <template v-if="running">                
+                <button :disabled="isZeroAttack" @click="attack(false)" class="btn attack">Ataque ({{countAttack}})</button>
+                <button :disabled="isZeroAttackSpecial"@click="attack(true)" class="btn special-attack">Ataque Especial ({{countAttackSpecial}})</button>
+                <button :disabled="isZeroHeal" @click="healAndHurt()" class="btn heal">Curar ({{countHeal}})</button>
+                <button @click="running = false" class="btn give-up">Desistir</button>
+            </template>
+
+            <button v-else @click="startGame" class="btn new-game">Iniciar Jogo</button>
+
+        </div>
+
+
+        <div v-if="!running && logs.length == 0" class="panel rules">
+            <div class="rules">
+                <span>R.E.G.R.A.S</span>
+                <ul>
+
+                    <li>Todo ataque ao monstro, gera um contra-ataque.</li>
+                    <li>A cada 3 ataques, ganha-se 1 cura.</li>
+                    <li>A cada 5 ataques, ganha-se 1 ataque espeical.</li>
+                    <li>Quando usa-se a cura você ganha mais 1 ataque, mas o monstro irá te atacar quando estiver se curando.</li>
+                    <li>Você inicia com 5 ataques.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div v-if="logs.length" class="panel logs">
+            <!--Testando no V-IF com a lista de logs, para exibir ou não a div (length é o tamnho, se maior que zero ele exib)-->
+            <ul>
+                <li v-for="log in logs" :class="log.cls">
+                    {{log.text}}
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+
+
+
+</body>
+
+
+
+</html>

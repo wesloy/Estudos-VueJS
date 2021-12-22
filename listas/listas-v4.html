@@ -1,0 +1,57 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="pessoa in pessoas">
+            {{ pessoa.nome }}
+            <!--
+            Acessando o atributo direto
+        -->
+        </li>
+    </ul>
+    <br>
+    <hr>
+    <ul>
+        <li v-for="(individuo) in pessoas">
+
+            <div v-for="(valor, chave, index) in individuo">
+                {{ chave }} = {{ valor }}
+            </div>
+            <!--
+            Acessando os atributos dinâmicamente, sabendo que a ordem de acesso dentro do v-for é:
+            valor
+            chave
+            index
+        -->
+        </li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            pessoas: [{
+                nome: 'Kellem Eloy',
+                idade: 40,
+                altura: 1.60
+            }, {
+                nome: 'Wesley Eloy',
+                idade: 37,
+                altura: 1.82
+            }, {
+                nome: 'Micael Eloy',
+                idade: 37,
+                altura: 1.82
+            }],
+        }
+    })
+</script>
+
+
+<style>
+    ul {
+        list-style: decimal;
+    }
+</style>

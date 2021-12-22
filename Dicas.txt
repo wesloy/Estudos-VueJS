@@ -1,0 +1,45 @@
+CLI
+>>> Instalar VUE CLI:
+    npm i -g @vue/cli
+
+>>>Plugins
+	Vetur
+	Vue VSCode Snippets
+	eslint
+	prettier
+    	Editorconfig for VSCode
+	
+
+>>> criação do projeto
+    vue create nome-projeto
+    vue add bootstrap-vue <<<< adiciona o bootstrap (Documentação>>> https://bootstrap-vue.org/)
+
+>>> Para recriar a pasta node_modules o comando é:
+    npm i ou npm install
+Isso é fundamental pq é uma pasta que não sobe no versionamento
+
+
+>>>> Deploy da aplicação <<<<
+    npm run build
+Vai criar a pasta "dist" que é pasta a ser publicada
+
+
+>>>> Plugins <<<<
+Transformar aplicação web em desktop
+    vue add electron-builder
+Consumir HTTP (Apis)
+    npm i --save axios
+Criar Rotas
+    npm i --save vue-router
+Gerenciador de comunicação entre componentes (Estado Centralizdo)
+    npm i --save vuex
+
+
+>>> para que a depencia de um plugin fique no package do projeoto se usa: --save
+Exemplo: npm i --save axios
+>>> Para instarlar exatamente uma versão de plugin, segue exemplo:
+npm i --save vue-router@3.0.2 -E
+
+
+>>>> estilos <<<<<<
+Background gradientes https://uigradients.com/  

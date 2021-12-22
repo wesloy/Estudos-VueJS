@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multi Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        <!-- MARCANDO NA PÁGINA ONDE A TEMPLATE DEVE SER INTERPOLADA-->
+    </div>
+</body>
+
+
+<script>
+    //criando e renderizando templates dentro da VM
+    const vm = new Vue({
+        template: `
+        <div id="app">
+            {{ titulo }}
+            <div>
+                <hr>
+                <button @click='alterar'>Alterar Título</button>
+            </div>
+        </div>
+        `,
+        data: {
+            titulo: 'Titulo'
+        },
+        methods: {
+            alterar() {
+                this.titulo += '?'
+            }
+        }
+    })
+
+    // chamando a template
+    vm.$mount('#app')
+</script>
+
+
+
+</html>

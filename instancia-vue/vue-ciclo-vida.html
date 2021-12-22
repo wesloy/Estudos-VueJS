@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<script src="https://unpkg.com/vue"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ciclo de Vida</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+        <hr>
+        <button @click="titulo += '#'">Alterar Título</button>
+        <button @click="$destroy()">Destruir</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Ciclo de Vida'
+        },
+        //Os métodos de ciclo de vidas são funções diretas e não métodos
+        beforeCreate() {
+            console.log('Antes de criar')
+        },
+        create() {
+            console.log('Criado')
+        },
+        beforeMount() {
+            console.log('Antes de montar a DOM')
+        },
+        mounted() {
+            console.log('DOM montada')
+        },
+        beforeUpdate() {
+            console.log('Antes de atualizar')
+        },
+        updated() {
+            console.log('Atualizado')
+        },
+        beforeDestroy() {
+            console.log('Antes de destruir')
+        },
+        destroyed() {
+            console.log('Destruído')
+        }
+
+    })
+</script>

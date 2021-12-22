@@ -1,0 +1,46 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="(cor, i) in cores">
+            {{i}} - {{ cor }}
+            <!--
+                Acessando o índice da lista
+                A ordem é o valor e depois o índice
+            -->
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="(cor, i) in cores">
+            {{i + 1}} - {{ cor }}
+            <!--
+                Acrescentando +1, já que em programação toda lista começa com zero...
+                Desta forma fica mais visível para o usuário final
+            -->
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+        }
+    })
+</script>
+
+
+<style>
+    ul {
+        list-style: none;
+    }
+</style>
+<!--
+    Retirando a decoração da lista pelo CSS
+        - retirar é none
+    Ou alterando
+-->

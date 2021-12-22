@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+
+    <!--
+        v-for tbm consegue rendenrizar um literal
+        qdo se sabe o total é muito útil
+    -->
+
+    <span v-for="n in 100">{{ n }}, </span>
+    <hr>
+    <div v-for="n in 10">{{ n }}</div>
+    <hr>
+    <p v-for="n in 10">{{ n }}</p>
+    <hr>
+    <h1 v-for="n in 3">{{ n }}</h1>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+    })
+</script>
+
+<style>
+    ul {
+        list-style: circle;
+    }
+</style>
